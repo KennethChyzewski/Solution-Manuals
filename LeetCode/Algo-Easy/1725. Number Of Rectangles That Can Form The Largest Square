@@ -1,0 +1,11 @@
+class Solution(object):
+    def countGoodRectangles(self, rectangles):
+        """
+        :type rectangles: List[List[int]]
+        :rtype: int
+        """
+        maxLengths = []
+        for rectangle in rectangles:
+            maxLengths.append(min(rectangle[0], rectangle[1]))
+        return maxLengths.count(max(maxLengths))
+        
