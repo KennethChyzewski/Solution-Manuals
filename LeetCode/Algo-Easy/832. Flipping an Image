@@ -1,0 +1,15 @@
+class Solution(object):
+    def flipAndInvertImage(self, image):
+        """
+        :type image: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        n = len(image)
+        for row in range(n):
+            image[row] = image[row][::-1]
+            for column in range(n):
+                if image[row][column] == 1:
+                    image[row][column] = 0
+                else:
+                    image[row][column] = 1
+        return image
