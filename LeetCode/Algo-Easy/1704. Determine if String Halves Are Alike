@@ -1,0 +1,15 @@
+class Solution(object):
+    def halvesAreAlike(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        return self.countVowels(s[:len(s)/2]) == self.countVowels(s[len(s)/2:])
+        
+    def countVowels(self, s):
+        vowels = 'aeiouAEIOU'
+        counter = 0
+        for c in s:
+            if c in vowels:
+                counter += 1
+        return counter
