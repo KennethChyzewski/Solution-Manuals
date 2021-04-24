@@ -1,0 +1,20 @@
+class Solution(object):
+    def removeOuterParentheses(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        primitives = []
+        start = 0
+        counter = 0
+        for i in range(len(s)):
+            if s[i] == '(':
+                counter += 1
+            else:
+                counter -= 1
+                
+            if counter == 0:
+                primitives.append(s[start:i+1])
+                start = i+1
+        
+        return "".join(p[1:-1] for p in primitives)
