@@ -1,0 +1,17 @@
+class Solution(object):
+    def replaceDigits(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        numbers = '1234567890'
+        output = ''
+        for x in range(len(s)):
+            if s[x] in numbers:
+                output += self.shift(output[x-1], int(s[x]))
+            else:
+                output += s[x]
+        return output
+    
+    def shift(self, char, amount):
+        return chr(ord(char) + amount)
