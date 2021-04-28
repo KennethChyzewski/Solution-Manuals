@@ -1,0 +1,16 @@
+class Solution(object):
+    def countGoodTriplets(self, arr, a, b, c):
+        """
+        :type arr: List[int]
+        :type a: int
+        :type b: int
+        :type c: int
+        :rtype: int
+        """
+        from itertools import combinations
+        triplets = list(combinations(arr, 3))
+        counter = 0
+        for triple in triplets:
+            if abs(triple[0] - triple[1]) <= a and abs(triple[1] - triple[2]) <= b and abs(triple[0] - triple[2]) <= c:
+                counter += 1
+        return counter
