@@ -1,0 +1,14 @@
+class Solution(object):
+    def sortSentence(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        words = [""] * len(s.split())
+        for word in s.split():
+                words[int(word[-1])-1] = word[:len(word)-1]
+        sentence = words[0]
+        for word in words[1:]:
+            sentence+= " "
+            sentence+= word
+        return sentence
