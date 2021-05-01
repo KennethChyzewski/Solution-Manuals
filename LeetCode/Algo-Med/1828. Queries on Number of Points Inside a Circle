@@ -1,0 +1,21 @@
+class Solution(object):
+    def countPoints(self, points, queries):
+        """
+        :type points: List[List[int]]
+        :type queries: List[List[int]]
+        :rtype: List[int]
+        """
+        answer = []
+        counter = 0
+        # j[0] = x_j
+        # j[1] = y_j
+        # j[2] = r_j
+        # i[0] = x_i
+        # i[1] = y_i
+        for j in queries:
+            for i in points:
+                if math.sqrt((j[0]-i[0])**2 + (j[1]-i[1])**2) <= j[2]:
+                    counter += 1
+            answer.append(counter)
+            counter = 0
+        return answer
