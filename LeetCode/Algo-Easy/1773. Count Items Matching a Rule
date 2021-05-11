@@ -1,0 +1,17 @@
+class Solution(object):
+    def countMatches(self, items, ruleKey, ruleValue):
+        """
+        :type items: List[List[str]]
+        :type ruleKey: str
+        :type ruleValue: str
+        :rtype: int
+        """
+        counter = 0
+        for item in items:
+            if ruleKey == "type" and ruleValue == item[0]:
+                counter += 1
+            if ruleKey == "color" and ruleValue == item[1]:
+                counter += 1
+            if ruleKey == "name" and ruleValue == item[2]:
+                counter += 1
+        return counter
