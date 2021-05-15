@@ -1,0 +1,16 @@
+class Solution(object):
+    def calculateTime(self, keyboard, word):
+        """
+        :type keyboard: str
+        :type word: str
+        :rtype: int
+        """
+        keys = {}
+        time = 0
+        for i in range(len(keyboard)):
+            keys[keyboard[i]] = i
+        index  = 0
+        for i in range(len(word)):
+            time += abs(keys[word[i]] - index)
+            index = keys[word[i]]
+        return time
