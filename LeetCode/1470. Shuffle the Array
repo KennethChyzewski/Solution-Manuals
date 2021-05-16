@@ -1,0 +1,15 @@
+class Solution(object):
+    def shuffle(self, nums, n):
+        """
+        :type nums: List[int]
+        :type n: int
+        :rtype: List[int]
+        """
+        x_index = 0
+        y_index = n
+        output = []
+        while x_index != n:
+            output+=[nums[x_index], nums[y_index]]
+            x_index+=1
+            y_index+=1
+        return output
