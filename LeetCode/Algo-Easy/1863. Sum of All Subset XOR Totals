@@ -1,0 +1,29 @@
+from itertools import combinations
+
+class Solution(object):
+    def subsetXORSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if nums == []:
+            return 0
+        combins = self.getCombinations(nums)
+        total = 0
+        for item in combins:
+            total += self.applyXOR(item)
+        return total
+            
+    def getCombinations(self, nums):
+        return sum([list(map(list, combinations(nums, i))) 
+                    for i in range(len(nums) + 1)], [])
+        
+    def applyXOR(self, lst):
+        if len(lst) == 0:
+            return 0
+        output = lst[0]
+        if len(lst) == 1:
+            return output
+        for i in range(1, len(lst)):
+            output ^= lst[i]
+        return output
