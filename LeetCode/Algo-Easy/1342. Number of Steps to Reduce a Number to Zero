@@ -1,0 +1,16 @@
+class Solution(object):
+    def numberOfSteps(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        counter = 0
+        return self.helper(num, counter)
+    
+    def helper(self, num, counter):
+        if num == 0:
+            return counter
+        elif num % 2 == 0:
+            return self.helper(num/2, counter+1)
+        else:
+            return self.helper(num-1, counter+1)
