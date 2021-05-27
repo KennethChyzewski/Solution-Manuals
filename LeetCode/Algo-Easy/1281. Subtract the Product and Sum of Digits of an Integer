@@ -1,0 +1,14 @@
+class Solution(object):
+    def subtractProductAndSum(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        nums = [int(char) for char in str(n)] 
+        prod = 1
+        summ = 0
+        for i in nums:
+            prod *= i
+        for i in nums:
+            summ += i
+        return prod - summ
