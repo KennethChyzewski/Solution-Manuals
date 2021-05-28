@@ -1,0 +1,11 @@
+class Solution(object):
+    def restoreString(self, s, indices):
+        """
+        :type s: str
+        :type indices: List[int]
+        :rtype: str
+        """
+        pairs = {}
+        for i in range(len(s)):
+            pairs[indices[i]] = s[i]
+        return "".join(pairs[i] for i in sorted(pairs.iterkeys()))
