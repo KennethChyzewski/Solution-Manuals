@@ -1,0 +1,9 @@
+class Solution(object):
+    def checkZeroOnes(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """ 
+        len1lst = s.split('0')
+        len0lst = s.split('1')
+        return len(max(len1lst, key=len)) > len(max(len0lst, key=len))
