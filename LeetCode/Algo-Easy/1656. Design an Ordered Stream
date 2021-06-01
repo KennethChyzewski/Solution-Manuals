@@ -1,0 +1,23 @@
+class OrderedStream(object):
+
+    def __init__(self, n):
+        """
+        :type n: int
+        """
+        self.stream = [[] for _ in range(n)]
+        self.ptr = 0
+
+    def insert(self, idKey, value):
+        """
+        :type idKey: int
+        :type value: str
+        :rtype: List[str]
+        """
+        self.stream[idKey - 1] = [value]
+        output = []
+        for i in range(self.ptr, len(self.stream)):
+            if self.stream[i] == []:
+                break
+            output += self.stream[i]
+            self.ptr += 1
+        return output
