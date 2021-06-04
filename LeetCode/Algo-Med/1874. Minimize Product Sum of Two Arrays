@@ -1,0 +1,10 @@
+class Solution(object):
+    def minProductSum(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: int
+        """
+        nums1 = sorted(nums1)
+        nums2 = sorted(nums2, reverse=True)
+        return sum([nums1[i]*nums2[i] for i in range(len(nums1))])
