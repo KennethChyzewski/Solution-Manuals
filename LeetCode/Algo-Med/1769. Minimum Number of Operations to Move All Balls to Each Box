@@ -1,0 +1,17 @@
+class Solution(object):
+    def minOperations(self, boxes):
+        """
+        :type boxes: str
+        :rtype: List[int]
+        """
+        answer = []
+        operations = 0
+        for i in range(len(boxes)):
+            for j in range(len(boxes)):
+                if i == j:
+                    continue
+                if boxes[j] == '1':
+                    operations += abs(i - j)
+            answer.append(operations)
+            operations = 0
+        return answer
