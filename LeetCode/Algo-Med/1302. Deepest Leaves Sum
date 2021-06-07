@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def deepestLeavesSum(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.depth = {}
+        self.helper(root, 0)
+        return self.depth[max(self.depth)]
+    
+    def helper(self, root, deep):
+        if not root:
+            return
+        
+        if deep not in self.depth:
+            self.depth[deep] = 0
+        self.depth[deep] += root.val 
+        
+        self.helper(root.left, deep+1)
+        self.helper(root.right, deep+1)
