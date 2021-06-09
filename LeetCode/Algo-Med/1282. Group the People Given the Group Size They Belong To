@@ -1,0 +1,16 @@
+class Solution(object):
+    def groupThePeople(self, groupSizes):
+        """
+        :type groupSizes: List[int]
+        :rtype: List[List[int]]
+        """
+        output = []
+        sizetoperson = {k: [] for k in range(1, max(groupSizes)+1)}
+        for i in range(len(groupSizes)):
+            sizetoperson[groupSizes[i]].append(i)
+        for key in sizetoperson:
+            if sizetoperson[key] == []:
+                continue
+            for i in range(0, len(sizetoperson[key]), key):
+                output.append(sizetoperson[key][i:i+key])      
+        return output
