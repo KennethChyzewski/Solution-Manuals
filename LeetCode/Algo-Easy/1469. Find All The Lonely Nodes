@@ -1,0 +1,25 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def getLonelyNodes(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        self.lonely = []
+        self.helper(root)
+        return self.lonely
+        
+    def helper(self, root):
+        if not root:
+            return
+        if (root.left and not root.right):
+            self.lonely.append(root.left.val)
+        if (root.right and not root.left):
+            self.lonely.append(root.right.val)
+        self.helper(root.left)
+        self.helper(root.right)
