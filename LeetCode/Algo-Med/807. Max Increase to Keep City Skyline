@@ -1,0 +1,21 @@
+class Solution(object):
+    def maxIncreaseKeepingSkyline(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        counter = 0
+        topbotskyline = []
+        temp = []
+        #get the tallest skylines
+        for i in range(len(grid)):
+            for row in grid:
+                temp.append(row[i])
+            topbotskyline.append(max(temp))
+            temp = []
+        lefrigskyline = [max(row) for row in grid]
+        #increase values according
+        for row in range(len(grid)):
+            for col in range(len(grid)):
+                counter += abs(min(topbotskyline[col], lefrigskyline[row]) - grid[row][col])
+        return counter
