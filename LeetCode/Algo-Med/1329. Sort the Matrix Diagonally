@@ -1,0 +1,27 @@
+class Solution(object):
+    def diagonalSort(self, mat):
+        """
+        :type mat: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        diagonals = {}
+        #let x-y be the id
+        for x in range(len(mat)):
+            diagonals[x] = self.getDiagonal(mat, x, 0)
+        for y in range(1,len(mat[0])):
+            diagonals[-y] = self.getDiagonal(mat, 0, y)
+        
+        for x in range(len(mat)):
+            for y in range(len(mat[0])):
+                mat[x][y] = diagonals[x-y].pop(0)
+        return mat
+        
+    def getDiagonal(self, mat, x, y):
+        values = [mat[x][y]]
+        while x < len(mat)-1 and y < len(mat[0])-1:
+            x+=1
+            y+=1
+            values.append(mat[x][y])
+        values.sort()
+        return values
+        
