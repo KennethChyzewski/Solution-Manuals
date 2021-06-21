@@ -1,0 +1,15 @@
+class Solution(object):
+    def minOperations(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        arr = [(2*i)+1 for i in range(0, n)]
+        counter = 0
+        x = n//2 - 1
+        y = n//2 if n % 2 == 0 else (n//2 + 1)
+        while x >= 0 and y <= n:
+            counter += (arr[y] - arr[x])//2
+            x-=1
+            y+=1
+        return counter
