@@ -1,0 +1,23 @@
+class Solution(object):
+    def oddCells(self, m, n, indices):
+        """
+        :type m: int
+        :type n: int
+        :type indices: List[List[int]]
+        :rtype: int
+        """
+        matrix = [[0 for _ in range(n)] for _ in range(m)]
+        odd = 0
+        for operation in indices:
+            for row in range(m):
+                for col in range(n):
+                    if row == operation[0]:
+                        matrix[row][col] += 1
+                    if col == operation[1]:
+                        matrix[row][col] += 1
+            
+        for row in range(m):
+            for col in range(n):
+                if matrix[row][col] % 2 == 1:
+                    odd+=1
+        return odd
