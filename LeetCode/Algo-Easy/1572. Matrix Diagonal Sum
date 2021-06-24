@@ -1,0 +1,16 @@
+class Solution(object):
+    def diagonalSum(self, mat):
+        """
+        :type mat: List[List[int]]
+        :rtype: int
+        """
+        front = 0
+        back = len(mat)-1
+        counter = 0
+        for row in mat:
+            if front != back:
+                counter += row[front]
+            counter += row[back]
+            front += 1
+            back -= 1
+        return counter
