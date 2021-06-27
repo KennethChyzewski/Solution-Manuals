@@ -1,0 +1,17 @@
+class Solution:
+    def countLetters(self, s: str) -> int:
+        counter = 0
+        sequence = s[0]
+        for i in range(1, len(s)):
+            if s[i] == sequence[-1]:
+                sequence += s[i]
+            else:
+                counter += self.arithmetic(sequence)
+                sequence = s[i]
+        counter += self.arithmetic(sequence)
+        return counter
+        
+    def arithmetic(self, string):
+        n = len(string)
+        return (n + 1) * n // 2
+        
