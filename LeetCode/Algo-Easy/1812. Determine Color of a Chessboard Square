@@ -1,0 +1,10 @@
+class Solution(object):
+    def squareIsWhite(self, coordinates):
+        """
+        :type coordinates: str
+        :rtype: bool
+        """
+        letters = 'abcdefgh'
+        letter_to_int = {letters[x-1]:x for x in range(1,9)}
+        coordinate_value = letter_to_int[coordinates[0]] + int(coordinates[-1])
+        return coordinate_value % 2 == 1
