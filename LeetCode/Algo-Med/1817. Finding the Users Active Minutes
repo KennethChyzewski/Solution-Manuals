@@ -1,0 +1,16 @@
+class Solution:
+    def findingUsersActiveMinutes(self, logs: List[List[int]], k: int) -> List[int]:
+        IDtoTime = {}
+        maxUAM = 0
+        for log in logs:
+            if log[0] not in IDtoTime:
+                IDtoTime[log[0]] = []
+            if log[1] not in IDtoTime[log[0]]:
+                IDtoTime[log[0]].append(log[1])
+        
+        UAM = [0 for _ in range(k)]
+        
+        for minutes in IDtoTime.values():
+            UAM[len(minutes)-1] += 1
+        
+        return UAM
