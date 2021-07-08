@@ -1,0 +1,15 @@
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        topfive = {}
+        for student, grade in items:
+            if student not in topfive:
+                topfive[student] = []
+            topfive[student].append(grade)
+            if len(topfive[student]) > 5:
+                topfive[student].sort()
+                topfive[student].pop(0)
+        
+        for student, grades in topfive.items():
+            topfive[student] = sum(grades)//5
+        
+        return [[student, topfive[student]] for student in sorted(topfive)]
