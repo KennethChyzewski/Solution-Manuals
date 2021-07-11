@@ -1,0 +1,12 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n == 1:
+            return 1
+        if n == 2:
+            return 2
+        steps = [1,2]
+        i = 2
+        while i != n:
+            steps.append(steps[i-2] + steps[i-1])
+            i += 1
+        return steps[i-1]
