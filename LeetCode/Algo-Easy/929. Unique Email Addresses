@@ -1,0 +1,10 @@
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        unique = []
+        for email in emails:
+            local = email[:email.find('@')].replace('.', '')
+            if '+' in local:  
+                local = local[:local.find('+')]
+            domain = email[email.find('@'):]
+            unique.append(local + domain)
+        return len(set(unique))
