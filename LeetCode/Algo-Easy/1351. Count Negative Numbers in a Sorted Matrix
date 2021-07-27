@@ -1,0 +1,17 @@
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        counter = 0
+        for row in grid:
+            counter += self.binarysearch(row)
+        return counter
+    
+    def binarysearch(self, row):
+        left = 0
+        right = len(row)
+        while left < right:
+            mid = left + (right - left) // 2
+            if row[mid] < 0:
+                right = mid
+            else:
+                left = mid + 1
+        return len(row[left:])
