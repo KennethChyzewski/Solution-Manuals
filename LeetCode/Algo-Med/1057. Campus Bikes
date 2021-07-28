@@ -1,0 +1,23 @@
+class Solution:
+    def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> List[int]:
+        
+        result = [None] * len(workers)
+        distances = []
+        for worker in range(len(workers)):
+            for bike in range(len(bikes)):
+                distances.append([worker, bike, self.Manhattan(workers[worker], bikes[bike])])
+        
+        distances.sort(key=lambda x:x[2])
+        bikes_taken = set()
+        i = 0
+        while len(bikes_taken) != len(workers):
+            best_bike = distances[i]
+            if best_bike[1] not in bikes_taken and result[best_bike[0]] is None:
+                bikes_taken.add(best_bike[1])
+                result[best_bike[0]] = best_bike[1]
+            i += 1
+        return result
+    
+    def Manhattan(self, p1, p2):
+        return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+        
