@@ -1,0 +1,5 @@
+class Solution:
+    def isArmstrong(self, n: int) -> bool:
+        numbers = [num for num in str(n)]
+        k = len(numbers)
+        return n == sum([int(num)**k for num in numbers])
