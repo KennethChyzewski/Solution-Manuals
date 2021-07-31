@@ -1,0 +1,23 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        s = s.strip()
+        if s == '':
+            return 0
+        strnum = ''
+        i = 0
+        if s[0] in '+-':
+            i += 1
+            strnum += s[0]
+        for i in range(i, len(s)):
+            if s[i].isdigit():
+                strnum += s[i]
+            else:
+                break
+        if strnum == '-' or strnum == '+' or len(strnum) == 0:
+            return 0
+        num = int(strnum)
+        if num > 2**31 - 1:
+            return 2**31 - 1
+        if num < -(2**31):
+            return -(2**31)
+        return num
