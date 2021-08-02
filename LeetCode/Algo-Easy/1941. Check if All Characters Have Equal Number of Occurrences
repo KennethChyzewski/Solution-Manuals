@@ -1,0 +1,10 @@
+class Solution:
+    def areOccurrencesEqual(self, s: str) -> bool:
+        if s == '':
+            return True
+        occurences = {}
+        for char in s:
+            if char not in occurences:
+                occurences[char] = 0
+            occurences[char] += 1
+        return max(occurences.values()) == min(occurences.values())
