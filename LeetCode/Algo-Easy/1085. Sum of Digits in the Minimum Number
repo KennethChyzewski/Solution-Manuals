@@ -1,0 +1,5 @@
+class Solution:
+    def sumOfDigits(self, nums: List[int]) -> int:
+        strnums = [int(c) for c in str(min(nums))]
+        return 1 if sum(strnums) % 2 == 0 else 0
+        
