@@ -1,0 +1,8 @@
+class Solution:
+    def minStoneSum(self, piles: List[int], k: int) -> int:
+        piles = [(pile * -1) for pile in piles]
+        heapq.heapify(piles)
+        for i in range(k):
+            heapq.heapreplace(piles, floor(piles[0] / 2))
+        return sum(piles) * -1
+        
