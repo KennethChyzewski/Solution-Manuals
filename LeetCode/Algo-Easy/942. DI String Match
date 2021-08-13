@@ -1,0 +1,16 @@
+class Solution:
+    def diStringMatch(self, s: str) -> List[int]:
+        perm = []
+        start = 0
+        end = len(s)
+        i = 0
+        while i < len(s):
+            if s[i] == 'I':
+                perm.append(start)
+                start += 1
+            else:
+                perm.append(end)
+                end -= 1
+            i+=1
+        perm.append(start)
+        return perm
