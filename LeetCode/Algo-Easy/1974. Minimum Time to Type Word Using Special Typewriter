@@ -1,0 +1,10 @@
+class Solution:
+    def minTimeToType(self, word: str) -> int:
+        time = 0
+        prev = 'a'
+        for char in word:
+            clockwise = (ord(char) - ord(prev)) % 26
+            cclockwise = (ord(prev) - ord(char)) % 26
+            time += min(clockwise, cclockwise) + 1
+            prev = char
+        return time
