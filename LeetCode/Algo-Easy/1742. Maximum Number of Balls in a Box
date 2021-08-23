@@ -1,0 +1,10 @@
+class Solution:
+    def countBalls(self, lowLimit: int, highLimit: int) -> int:     
+        boxes = {}
+        for i in range(lowLimit, highLimit+1):
+            box = sum([int(num) for num in str(i)])
+            if box not in boxes:
+                boxes[box] = 0
+            boxes[box] += 1
+        return max(boxes.values())
+
