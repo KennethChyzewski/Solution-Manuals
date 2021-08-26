@@ -1,0 +1,9 @@
+class Solution:
+    
+    lettertoint = {char: str(i) for i, char in enumerate('abcdefghij')}
+    
+    def isSumEqual(self, firstWord: str, secondWord: str, targetWord: str) -> bool:
+        return self.convertWordToInt(firstWord) + self.convertWordToInt(secondWord) == self.convertWordToInt(targetWord)
+        
+    def convertWordToInt(self, word):
+        return int(''.join(self.lettertoint[char] for char in word))
