@@ -1,0 +1,12 @@
+class Solution:
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+        boxTypes.sort(key=lambda x: x[1], reverse=True)
+        counter = 0
+        for box in boxTypes:
+            while box[0] != 0:
+                box[0] -= 1
+                counter += box[1]
+                truckSize -= 1
+                if truckSize == 0:
+                    return counter
+        return counter
