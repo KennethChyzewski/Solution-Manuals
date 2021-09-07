@@ -1,0 +1,15 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        # kadanes algo
+        max_length = 0
+        max_count = 0
+        count = collections.Counter()
+        for i in range(len(s)):
+            count[s[i]] += 1
+            max_count = max(max_count, count[s[i]])
+            # sliding window
+            if max_length < max_count + k:
+                max_length += 1
+            else:
+                count[s[i-max_length]] -= 1
+        return max_length
