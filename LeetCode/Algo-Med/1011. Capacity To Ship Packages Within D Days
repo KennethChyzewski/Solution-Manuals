@@ -1,0 +1,23 @@
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        L = max(weights)
+        R = sum(weights)
+        while L < R:
+            mid = L + (R - L) // 2
+            if self.helper(weights, days, mid):
+                R = mid
+            else:
+                L = mid + 1
+        return L
+    
+    def helper(self, weights, days, capacity):
+        day = 1
+        total = 0
+        for weight in weights:
+            total += weight
+            if total > capacity:
+                total = weight
+                day += 1
+            if day > days:
+                return False
+        return True
