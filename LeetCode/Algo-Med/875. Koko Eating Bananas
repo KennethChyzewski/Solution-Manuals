@@ -1,0 +1,23 @@
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        L = 1
+        R = max(piles)
+        while L < R:
+            mid = L + (R - L) // 2
+            if self.canEat(piles, h, mid):
+                R = mid
+            else:
+                L = mid + 1
+        return L
+    
+    def canEat(self, piles, h, k):
+        # for pile in piles:
+        #     while pile > 0:
+        #         pile -= k
+        #         h -= 1
+        # if h < 0:
+        #     return False
+        # return True
+        lst = [(pile - 1) // k + 1 for pile in piles]        
+        return sum(lst) <= h
+
