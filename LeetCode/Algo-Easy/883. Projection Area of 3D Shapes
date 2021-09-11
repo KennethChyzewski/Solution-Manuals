@@ -1,0 +1,6 @@
+class Solution:
+    def projectionArea(self, grid: List[List[int]]) -> int:    
+        max_row = sum(map(max, grid))
+        max_col = sum(map(max, zip(*grid)))
+        top_down = sum(grid[i][j] > 0 for i in range(len(grid)) for j in range(len(grid[i])))
+        return max_row + max_col + top_down
