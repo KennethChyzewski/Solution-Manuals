@@ -1,0 +1,9 @@
+class Solution:
+    def allCellsDistOrder(self, rows: int, cols: int, rCenter: int, cCenter: int) -> List[List[int]]:
+        res = []
+        for r in range(rows):
+            for c in range(cols):
+                res.append([r, c, (abs(r - rCenter) + abs(c - cCenter))])
+        res.sort(key=lambda x: x[2])
+        return [[coord[0], coord[1]] for coord in res]
+
