@@ -1,0 +1,11 @@
+class Solution:
+    def maxNumberOfApples(self, arr: List[int]) -> int:
+        arr.sort()
+        total = counter = 0
+        for apple in arr:
+            total += apple
+            if total > 5000:
+                break
+            counter += 1
+        return counter
+
