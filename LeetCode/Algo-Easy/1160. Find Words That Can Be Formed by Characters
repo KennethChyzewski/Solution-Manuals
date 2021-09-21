@@ -1,0 +1,23 @@
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:    
+        def helper(word: str) -> bool:
+            curr_occurences = {}
+            # faster than word.count()
+            for c in word:
+                if c not in curr_occurences:
+                    curr_occurences[c] = 0
+                curr_occurences[c] += 1
+            for c in word:
+                if curr_occurences[c] > occurences[c]:
+                    return False
+            return True
+        
+        occurences = {letter: 0 for letter in 'abcdefghijklmnopqrstuvwxyz'}
+        for c in chars:
+            occurences[c] += 1
+        res = 0
+        for word in words:
+            if helper(word):
+                res += len(word)
+        return res
+        
