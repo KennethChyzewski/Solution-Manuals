@@ -1,0 +1,10 @@
+class Solution:
+    def average(self, salary: List[int]) -> float:
+        minimum = 10**7
+        maximum = -1
+        res = 0
+        for s in salary:
+            res += s
+            minimum = min(minimum, s)
+            maximum = max(maximum, s)
+        return (res - minimum - maximum) / (len(salary)-2)
