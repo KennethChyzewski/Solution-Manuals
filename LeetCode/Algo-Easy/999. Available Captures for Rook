@@ -1,0 +1,38 @@
+class Solution:
+    def numRookCaptures(self, board: List[List[str]]) -> int:
+        def available_capture(pawn, rook, bishops):
+            pawn_x = pawn[0]
+            pawn_y = pawn[1]
+            rook_x = rook[0]
+            rook_y = rook[1]
+            # check rows
+            for i in range(min(pawn_x, rook_x), max(pawn_x, rook_x)):
+                coord = (i, rook_y)
+                if coord in bishops:
+                    return False
+            # check columns
+            for i in range(min(pawn_y, rook_y), max(pawn_y, rook_y)):
+                coord = (rook_x, i)
+                if coord in bishops:
+                    return False
+            return True
+        
+        rook = None
+        bishops = []
+        pawns = []
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                if board[i][j] == 'R':
+                    rook = (i,j)
+                elif board[i][j] == 'B':
+                    bishops.append((i,j))
+                elif board[i][j] == 'p':
+                    pawns.append((i,j))
+        
+        res = 0
+        for pawn in pawns:
+            # same column or row
+            if pawn[0] == rook[0] or pawn[1] == rook[1]:
+                if available_capture(pawn, rook, bishops):
+                    res += 1
+        return res
