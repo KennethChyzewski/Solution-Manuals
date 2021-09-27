@@ -1,0 +1,16 @@
+class Solution:
+    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
+        def helper(word):
+            for i in range(len(word)):
+                prefix = word[:i]
+                suffix = word[i:]
+                if prefix in word_set and suffix in word_set:
+                    return True
+                elif prefix in word_set and helper(suffix):
+                    return True
+                elif suffix in word_set and helper(prefix):
+                    return True
+            return False
+        word_set = set(words)
+        return [word for word in words if helper(word)]
+
