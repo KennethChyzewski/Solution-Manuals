@@ -1,0 +1,12 @@
+class Solution:
+    def largestUniqueNumber(self, nums: List[int]) -> int:
+        nums = sorted(nums, reverse=True)
+        counter = {}
+        for num in nums:
+            if num not in counter:
+                counter[num] = 0
+            counter[num] += 1
+        for num in nums:
+            if counter[num] == 1:
+                return num
+        return -1
