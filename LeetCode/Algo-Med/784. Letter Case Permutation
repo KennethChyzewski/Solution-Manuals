@@ -1,0 +1,14 @@
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        res = []
+        def helper(s, i, new_s):
+            if i == len(s):
+                res.append(new_s)
+                return
+            if s[i].isalpha():
+                helper(s, i+1, new_s+s[i].upper())
+                helper(s, i+1, new_s+s[i].lower())
+            else:
+                helper(s, i+1, new_s+s[i])
+        helper(s, 0, '')
+        return res
