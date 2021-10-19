@@ -1,0 +1,15 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+        def dfs(remaining_candidates, path):
+            if sum(path) > target:
+                return
+            if sum(path) == target:
+                path.sort()
+                if path not in res: 
+                    res.append(path)
+                return
+            for i in range(len(remaining_candidates)):
+                dfs(remaining_candidates, path+[remaining_candidates[i]])
+        dfs(candidates, [])
+        return res
