@@ -1,0 +1,12 @@
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        count = []
+        def dfs(i, total):
+            if i == len(nums):
+                if total == target:
+                    count.append(1)
+            else:
+                dfs(i+1, total+nums[i])
+                dfs(i+1, total-nums[i])
+        dfs(0, 0)
+        return sum(count)
